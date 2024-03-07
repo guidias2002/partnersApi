@@ -6,6 +6,7 @@ Route.group(() => {
     return { hello: 'world' }
   })
 
-  Route.resource('/moments', 'PartnersController').apiOnly()
-  Route.delete('/moments', 'PartnersController.deleteAll')
+  Route.resource('/partner', 'PartnersController').apiOnly()
+  Route.delete('/partner', 'PartnersController.deleteAll')
+  Route.post('/partner/:partnerId/schools', 'SchoolsController.store')
 }).prefix('/api')

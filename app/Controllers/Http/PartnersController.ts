@@ -12,7 +12,7 @@ export default class PartnersController {
       }
 
       const newPartner = await Partner.create({ cnpj, fantasy_name })
-      
+
       return response.status(201).send(newPartner)
     } catch (error) {
       return response.status(500).send({ error: 'Internal Server Error' })
@@ -20,7 +20,7 @@ export default class PartnersController {
   }
 
   public async index() {
-    const partners = await Partner.all()
+    const partners = await Partner.query().preload('schools');
 
     return partners
   }
