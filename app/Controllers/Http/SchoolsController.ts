@@ -10,9 +10,12 @@ export default class SchoolsController {
 
     await Partner.findOrFail(partnerId);
 
-    body.partnerId = partnerId;
+    body.schools.forEach((escola: any) => {
+      escola.partnerId = partnerId;
+    });
 
-    const school = await School.create(body);
+    console.log(body)
+    const school = await School.createMany(body.schools);
 
     response.status(201);
 
